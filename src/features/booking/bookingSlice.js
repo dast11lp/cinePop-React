@@ -1,5 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchScreening } from "../../services/screeningsService";
+import { processPayment } from "../../services/bookingService";
+import { setModal } from "../ui/modalSlice";
 import {
   fetchChairs,
   createReservation,
@@ -109,6 +111,40 @@ const bookingSlice = createSlice({
     },
   },
 });
+
+export const processPaymentMiddleware =
+  ({ paymentBody }) =>
+  async (dispatch) => {
+    try {
+      const { status } = await processPayment(paymentBody);
+      if (status === 200 || status === 201) {
+        dispatch(setModal({
+          type: "paymentSuccess",
+          title: "¡Pago exitoso!",
+          message: "Tu reserva fue confirmada.",
+          open: true,
+          others: {},
+        }));
+      } else {
+        dispatch(setModal({
+          type: "error",
+          title: "Pago fallido",
+          message: "Tu tarjeta fue rechazada. Revisa los fondos.",
+          open: true,
+          others: {},
+        }));
+      }
+    } catch (error) {
+      dispatch(setModal({
+        type: "error",
+        title: "Error",
+        message: "Ocurrió un error procesando el pago.",
+        open: true,
+        others: {},
+      }));
+    }
+  };
+
 
 export const functionFetchMiddleware = (id) => async (dispatch) => {
   try {

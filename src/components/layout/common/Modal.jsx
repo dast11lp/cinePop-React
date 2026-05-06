@@ -10,9 +10,13 @@ import {
   setIdSeats,
 } from "../../../features/booking/bookingSlice";
 
+import { processPaymentMiddleware } from "../../../features/booking/bookingSlice";
+import { formatDate } from "../../../helpers/formatDate";
+
 export const Modal = () => {
   const dispatch = useDispatch();
   const modalSlice = useSelector((state) => state.modal.modalData);
+  const purchaseSummary = useSelector((state) => state.booking.purchaseSummary);
 
   const navigate = useNavigate();
 
@@ -26,10 +30,15 @@ export const Modal = () => {
         return <button className="button button--secundary button--accept" onClick={(e) => acceptButton(e, removeIdSeats)}>Remover</button>;
       case "reserve":
         return <button className="button button--secundary button--accept" onClick={(e) => acceptButton(e, reserveFetchMiddleware)}>Comprar</button>;
+      case "confirmPayment":
+        return <button className="button button--secundary button--accept" onClick={(e) => acceptButton(e, processPaymentMiddleware)}>Confirmar y pagar</button>;
+      case "paymentSuccess":
+        return <Link onClick={closeModal} className="button" to="/cartelera">Seguir Comprando</Link>;
       default:
         return null;
     }
   };
+
 
   const closeModal = () => {
     dispatch(
@@ -41,6 +50,7 @@ export const Modal = () => {
       })
     );
   };
+
 
 
   const acceptButton = (e, middleware) => {
@@ -76,11 +86,21 @@ export const Modal = () => {
         </div>
         <div className="modal__box__content">
           <h2>{modalSlice.title} </h2>
-          <p>{modalSlice.message}</p>
+          {(modalSlice.type === "confirmPayment" || modalSlice.type === "paymentSuccess") && purchaseSummary?.data ? (
+            <div>
+              <p>Película: <strong>{purchaseSummary.data.movieName}</strong></p>
+              <p>Sillas: <strong>{purchaseSummary.data.chairs?.map((c) => c.numberChair).join(", ")}</strong></p>
+              <p>Fecha función: <strong>{formatDate(purchaseSummary.data.dateFun)}</strong></p>
+              <p>Sala: <strong>{purchaseSummary.data.room}</strong></p>
+              <p>Total: <strong>${purchaseSummary.data.totalMount}</strong></p>
+            </div>
+          ) : (
+            <p>{modalSlice.message}</p>
+          )}
         </div>
         <div className="modal__button-section">
           {renderButton()}
-          <button className="button button--reject" onClick={closeModal}>Cancelar</button>
+          {modalSlice.type !== "paymentSuccess" ? <button className="button button--reject" onClick={closeModal}>Cancelar</button> : ""}
         </div>
       </div>
     </div>

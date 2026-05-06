@@ -14,71 +14,45 @@ export default function CardForm() {
 
     const { register, handleSubmit, formState: { errors } } = useForm()
 
-    const onSubmit = async (data) => {
+const onSubmit = async (data) => {
+    try {
+        const mp = new window.MercadoPago("TEST-589f41a1-5439-4394-b89d-6256a0678a0b", {
+            locale: "es-CO"
+        })
 
-        try {
-            const mp = new window.MercadoPago("TEST-589f41a1-5439-4394-b89d-6256a0678a0b", {
-                locale: "es-CO"
-            })
+        const token = await mp.createCardToken({
+            cardNumber: data.cardNumber,
+            cardholderName: data.cardholderName,
+            cardExpirationMonth: data.expirationMonth,
+            cardExpirationYear: data.expirationYear,
+            securityCode: data.securityCode,
+            identificationType: "CC",
+            identificationNumber: data.identificationNumber
+        })
 
-            const token = await mp.createCardToken({
-                cardNumber: data.cardNumber,
-                cardholderName: data.cardholderName,
-                cardExpirationMonth: data.expirationMonth,
-                cardExpirationYear: data.expirationYear,
-                securityCode: data.securityCode,
-                identificationType: "CC",
-                identificationNumber: data.identificationNumber
-            })
-
-            console.log("token:", token)
-
-            const paymentBody = {
-                fullname: data.cardholderName,
-                cc: data.identificationNumber,
-                email: "test@test.com", // cambiar al usuario del cliente?? 
-                token: token.id,
-                price: purchaseSummary.data.totalMount,
-                // // paymentMethodId: token.payment_method_id, 
-                // // paymentMethodId: token.bin_attributes?.brand?.code, 
-                paymentMethodId: "visa",
-                reservationId: purchaseSummary.data.reservationId,
-                listChairs: purchaseSummary.data.chairs.map(c => c.id)
-            }
-
-
-            console.log("paymentBody:", paymentBody)
-
-            const { status, data: result } = await processPayment(paymentBody);
-
-            console.log("Código HTTP:", status);
-            console.log("Cuerpo respuesta:", result);
-
-
-            if (status === 201 || status === 200) {
-                dispatch(setModal({
-                    type: "info",
-                    title: "Reserva Exitosa",
-                    message: "la reserva fue realizada con éxito",
-                    open: true,
-                    others: {},
-                }));
-            } else if (status === 402) { // Pago rechazado
-                dispatch(setModal({
-                    type: "error",
-                    title: "Pago fallido",
-                    message: "Tu tarjeta fue rechazada. Revisa los fondos.",
-                    open: true,
-                }));
-            } else {
-                // Cualquier otro error (500, 400, etc)
-                throw new Error(result.message || "Error desconocido");
-            }
-
-        } catch (error) {
-            console.error("T-T", " ", error)
+        const paymentBody = {
+            fullname: data.cardholderName,
+            cc: data.identificationNumber,
+            email: "test@test.com",
+            token: token.id,
+            price: purchaseSummary.data.totalMount,
+            paymentMethodId: "visa",
+            reservationId: purchaseSummary.data.reservationId,
+            listChairs: purchaseSummary.data.chairs.map(c => c.id)
         }
+
+        
+        dispatch(setModal({
+            type: "confirmPayment",
+            title: "¿Confirmar pago?",
+            open: true,
+            others: { paymentBody },
+        }));
+
+    } catch (error) {
+        console.error("T-T", error)
     }
+}
 
 
     return (
