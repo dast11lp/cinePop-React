@@ -1,4 +1,4 @@
-import { get, getAuth, postAuth } from "./api";
+import { getAuth, postAuth } from "./api";
 
 export const fetchChairs = (id) =>
   getAuth(`functionChair/chairs-by-function/${id}`);

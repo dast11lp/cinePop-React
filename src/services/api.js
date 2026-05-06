@@ -30,4 +30,11 @@ export const postAuth = (path, body) =>
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
     body: JSON.stringify(body),
-  }).then((r) => r.json());
+  }).then(async (r) => {
+    const data = await r.json();
+    return {
+      status: r.status,
+      data: data
+    };
+  });
+

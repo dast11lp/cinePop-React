@@ -1,6 +1,6 @@
 import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setModal } from "../../../features/ui/modalSlice";
 import { Link, useNavigate } from "react-router-dom";
@@ -48,7 +48,7 @@ export const Modal = () => {
       if (middleware) {
         dispatch(middleware(modalSlice.others))
         closeModal();
-      };
+      }
       if (modalSlice.type == "reserve") {
         navigate("/compras/funcion/purchaseSummary");
       }
@@ -67,7 +67,6 @@ export const Modal = () => {
     }
   }, []);
 
-  
 
   return (
     <div className="modal">
