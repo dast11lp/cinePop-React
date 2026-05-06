@@ -5,6 +5,18 @@ const initialState = {
   userLogin: {},
 };
 
+// pasar a un helper lo siguiente
+
+const isTokenValid = (token) => {
+  try {
+    const payload = JSON.parse(atob(token.split('.')[1]));
+    // exp es un timestamp, exp es el momento en el que vence el token ¿la fecha de expiración todavía está en el futuro?
+    return payload.exp * 1000 > Date.now(); 
+  } catch {
+    return false;
+  }
+};
+
 const authSlice = createSlice({
   name: "auth",
   initialState,
@@ -19,8 +31,17 @@ const authSlice = createSlice({
       localStorage.removeItem("user"), localStorage.removeItem("token");
     },
     getLogin: (state) => {
+      const token = localStorage.getItem("token");
+
+      if (!token || !isTokenValid(token)) {
+        state.userLogin = {};
+        localStorage.removeItem("user");
+        localStorage.removeItem("token");
+        return;
+      }
+
       const user = JSON.parse(localStorage.getItem("user"));
-      state.userLogin = { ...user, token: localStorage.getItem("token") };
+      state.userLogin = { ...user, token };
     },
   },
 });
@@ -45,7 +66,7 @@ export const registerFetchMiddleware = (body) => async (dispatch) => {
     const data = await registerFetch(body);
     console.log(data);
     dispatch;
-  } catch (error) {}
+  } catch (error) { }
 };
 
 export const { setLogin, setLogOut, getLogin } = authSlice.actions;
