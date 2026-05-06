@@ -1,0 +1,27 @@
+@use "../abstracts/variables" as v;
+
+.register {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(22rem,1fr));
+    grid-template-rows: min-content repeat(6, 78px);
+    gap: 2rem;
+    align-self: center;
+    width: 55%;
+    color: v.$color-tertiary;
+    font-size:1.6rem ;
+    &__field {
+        &--1 {
+            grid-column: 1 / -1;
+        }
+        &--10 {
+            grid-column: 1 / -1;
+        }
+    }
+}
+
+.button--regis {
+    grid-column: 1 / -1;
+    max-width: 20rem;
+    justify-self: center;
+    margin: 1rem;
+}

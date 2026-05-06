@@ -1,0 +1,21 @@
+@use '../abstracts/variables' as v;
+
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Quicksand:wght@300;400;500;600;700&family=Roboto:wght@400;700&display=swap');
+
+$root: '/';
+
+@font-face {
+    font-family: "Star Jedi";
+    src: url('#{$root}src/assets/fonts/Starjedi.ttf'); 
+}
+
+@font-face {
+    font-family: "Star Killer";
+    src: url('#{$root}src/assets/fonts/starkiller/Starkiller Outline.ttf'); 
+}
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1.2rem;
+    color: v.$color-tertiary;
+}

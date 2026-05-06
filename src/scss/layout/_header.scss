@@ -1,0 +1,84 @@
+@use "../abstracts/variables" as v;
+
+.header {
+    grid-area: header;
+
+    display: grid;
+    grid-template-columns: repeat(2, minmax(50%, 120rem));
+    grid-template-rows: min-content minmax(min-content, 1fr);
+    background-color: v.$color-primary;
+    
+   
+
+    &__nav {
+        grid-column: 1 / -1;
+        width: 100%;
+        margin: auto;
+        max-width: 120rem;
+    }
+
+    &--viewport {
+        background-image: url("/src/assets/img/background-star-wars.jpg");
+        background-size: cover;
+        background-position: center;
+        min-height: 100vh;
+        width: 100vw;
+        color: v.$color-tertiary;
+    }
+
+    &__content {
+        grid-column: 1 / -1;
+
+        display: grid;
+        justify-self: center;
+        grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+        justify-items: center;
+        align-items: center;
+
+        &__title {
+            &__box {
+                height: 30rem;
+                max-width: 30rem;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: space-evenly;
+                &__img {
+                    max-width: 90%;
+                }
+                &__info {
+                    display: flex;
+                    justify-content: space-around;
+                    align-items: center;
+                    // flex: 1 1;
+                    width: 100%;
+                    &__legend {
+                        display: flex;
+                        flex-direction: column;
+                    }
+                }
+                &__social-media {
+                    display: flex;
+                    justify-content: space-evenly;
+                    // flex: 1 1;
+                    width: 100%;
+                    &__icon-links {
+                        &__icon {
+                            height: 2.5rem;
+                            color: v.$color-tertiary
+                        }
+                    }
+                }
+            }
+        }
+
+        &__right{
+            justify-self: center;
+            &__message{
+                text-align: center;
+                font-family: 'Star Killer';
+                font-size: clamp(1.6rem, 4.7vw, 5rem);
+            }
+        }
+    }
+}

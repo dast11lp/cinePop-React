@@ -1,0 +1,43 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+.custom-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 2rem;
+
+    height: 44rem;
+    min-height: 40rem;
+    width: 22rem;
+    color: v.$color-primary;
+    
+    background-color: v.$color-tertiary;
+    border-radius: 4px;
+
+    &__title{
+        font-size: 3rem;
+        font-weight: 800;
+    }
+
+    &__description {
+        font-size: 1.5rem;
+        &__pg {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            &__background{
+                background-color: v.$color-primary;
+                border-radius: v.$border-primary;
+                display: flex;
+                justify-content: center;
+                align-items: center;                
+            }
+        }
+    }
+    
+    @include m.custom-section(1024);
+    @include m.custom-section(500);
+    @include m.custom-section(312);
+}

@@ -1,0 +1,55 @@
+@use "../abstracts/variables" as v;
+@use "../abstracts/mixins" as m;
+
+.chairs {
+    display: grid;
+    grid-template-columns: repeat(10, 5rem);
+    grid-template-rows: repeat(6, 5rem);
+    gap: 2rem;
+    
+    padding: 20px;
+    border-radius: 5px;
+    
+
+    &__chair {
+        justify-self: center;
+        position: relative;
+
+        &__icon {
+            padding: 0.5rem;
+            height: 5rem;
+
+            &--small {
+                height: 2rem;
+            }
+        }
+
+        &__number {
+            // position: absolute;
+            top: 50%;
+            color: black;
+        }
+
+        &--reserved {
+            color: v.$color--senary;
+        }
+        &--not-reserved {
+            &:hover {
+                color: v.$color--disabled-backgroud;
+            }
+        }
+
+        &--selected {
+            color: v.$color--septenary;
+        }
+
+        &--free {
+            color: v.$color-tertiary;
+        }
+        &--toReserve {
+            color: v.$color--disabled-backgroud;
+        }
+    }
+    @include m.chairs(730px);
+    @include m.chairs(312);
+}

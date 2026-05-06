@@ -1,0 +1,30 @@
+@use '../abstracts/variables' as v;
+
+.pagination {
+    display: flex;
+    list-style: none;
+    margin: 2rem;
+    justify-content: center;
+
+    li {
+        margin: 0 .1vw;
+    }
+
+    a {
+        text-decoration: none;
+        color: v.$color-tertiary;
+        padding: 0.5vw 2vw;
+        // border: 1px solid #ccc;
+        box-shadow: v.$color-light-shadow-primary;
+        border-radius: 4px;
+        &:hover {
+            background: v.$color-tertiary;
+            color: v.$color-primary;
+        }
+    }
+}
+
+
+ .pagination .isActive a {
+    background-color: #007bff;
+}

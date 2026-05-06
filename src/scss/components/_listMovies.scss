@@ -1,0 +1,13 @@
+@use '../abstracts/mixins' as m;
+
+.listMovies {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    justify-items: center;
+    width: 100%;
+    align-items: center;
+    margin: 3rem 0;
+    column-gap: 6px ;
+
+    @include m.listMovies(365px);
+}

@@ -1,0 +1,27 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+.how-many {
+    font-size: 1.8rem;
+
+    &__content {
+        display: flex;
+        justify-content: space-around;
+
+        margin: 5rem 0 0 0;
+        font-size: 3rem;
+    }
+    &__total-price{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        margin: 2.5rem
+    }
+
+    &__button-section {
+        display: flex;
+        justify-content: center;
+    }
+    @include m.how-many-tickets(360px);
+}

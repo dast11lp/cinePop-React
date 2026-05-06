@@ -1,0 +1,22 @@
+@use "../abstracts/variables" as v;
+
+.ur-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.unique-reserve {
+    box-shadow: v.$color-light-shadow-secundary;
+    font-size: clamp(1.1rem, 1.2vw, 1.6rem);
+    margin: 1.5rem ;
+
+    &__content {
+        margin: 3rem 2rem;
+        display: grid;
+        align-items: center;
+        justify-content: center;
+        grid-template-rows: repeat(9, minmax(3.9rem,3.5vw));
+    }
+}

@@ -1,0 +1,22 @@
+@use "../abstracts/variables" as v;
+
+.layout {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr repeat(12, minmax(min-content, 10rem)) 1fr;
+    grid-template-rows: auto 1fr;
+
+    grid-template-areas:
+        ". header header header header header header header header header header header header ."
+        ". anyContent anyContent  anyContent  anyContent  anyContent  anyContent  anyContent  anyContent  anyContent  anyContent  anyContent  anyContent .";
+    background: v.$color-primary;
+}
+
+
+.anyContent {
+    grid-area: anyContent;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}

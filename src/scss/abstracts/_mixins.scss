@@ -1,0 +1,248 @@
+@use "../abstracts/variables" as v;
+
+@mixin links-navbar($breakpoint) {
+    @media screen and (max-width: $breakpoint) {
+        // background-color: v.$color-primary;
+        &__nav {
+            position: relative;
+            &__brand {
+                flex: 1 1;
+            }
+            &__navlinks {
+                order: 3;
+                flex: 1 1;
+                justify-content: end;
+
+                &__links {
+                    display: none;
+                    position: absolute;
+                    top: 100%;
+                    width: 100%;
+                    margin: 5px 0;
+                    padding: 10px 0;
+
+                    background-color: v.$color-primary;
+                    border-radius: v.$border-primary;
+                    &__li {
+                        &--visibility {
+                            display: flex;
+                            visibility: visible;
+                        }
+                        &__link {
+                            font-size: clamp(1.1rem, 5vw, 1.5rem);
+                        }
+                    }
+                }
+                &__menu-burger {
+                    display: inline-block;
+                }
+            }
+
+            &__userbox {
+                display: flex;
+                justify-content: center;
+                &--visibility {
+                    display: none;
+                    visibility: hidden;
+                }
+                
+            }
+            &__user {
+                padding: 0 ;
+                border-radius: 0;
+                background-color: transparent;
+                &__menu {
+                    & a,
+                    & button {
+                        font-size: clamp(1.2rem, 1.2vw, 1.5rem);
+                    }
+                }
+                &__button {
+                    &__username {   
+                        display: none;
+                        visibility: hidden;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@mixin function-page($breakpoint) {
+    @if ($breakpoint <= 1200px) {
+        @media screen and (max-width: $breakpoint) {
+            grid-template-columns: 1fr;
+            grid-template-rows: min-content;
+            min-width: 20rem;
+            width: 85vw;
+            height: min-content;
+
+            &__movie-details {
+                height: min-content;
+                &__content {
+                    flex-direction: row;
+                    &__img-box {
+                        height: 30vh;
+                    }
+
+                    & > * {
+                        margin: 0.5rem;
+                    }
+                }
+            }
+        }
+    }
+    @if ($breakpoint <= 815px) {
+        @media screen and (max-width: $breakpoint) {
+            &__movie-details {
+                &__content {
+                    flex-direction: column;
+                    & > * {
+                        margin: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@mixin how-many-tickets($breakpoint) {
+    @media screen and (max-width: $breakpoint) {
+        // font-size: 1.4rem;
+        font-size: 5vw;
+
+        &__content {
+            // font-size: 2.5rem;
+            font-size: 11vw;
+        }
+    }
+}
+
+@mixin vertical-seats($breakpoint) {
+    @media screen and (max-width: $breakpoint) {
+        flex-direction: column;
+    }
+}
+
+@mixin chairs($breakpoint) {
+    @media screen and (max-width: $breakpoint) {
+        display: grid;
+        grid-template-columns: repeat(10, 5vw);
+        grid-template-rows: repeat(6, 5vw);
+        // gap: 20px;
+        gap: 4vw;
+
+        padding: 20px;
+        border-radius: 5px;
+
+        &__chair {
+            justify-self: center;
+            position: relative;
+
+            &__icon {
+                height: 6vw;
+                &--small {
+                    height: 2rem;
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width: $breakpoint) {
+        display: grid;
+        grid-template-columns: repeat(10, 4vw);
+        grid-template-rows: repeat(6, 4vw);
+        // gap: 20px;
+        gap: 4vw;
+
+        padding: 20px;
+        border-radius: 5px;
+    }
+
+    @if $breakpoint <= 312 {
+        @media screen and (max-width: #{$breakpoint}px) {
+            &__chair {
+                &__icon {
+                    &--small {
+                        height: 6vw;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@mixin custom-section($breakpoint) {
+    @if $breakpoint == 500 {
+        @media screen and (max-width: #{$breakpoint}px) {
+            flex-direction: column;
+            // height: 18rem;
+            height: 80vw;
+        }
+    }
+
+    @if $breakpoint == 1024 {
+        @media screen and (max-width: #{$breakpoint}px) {
+            width: 80vw;
+            min-height: auto;
+            height: 16rem;
+            flex-direction: row;
+        }
+    }
+
+    @if $breakpoint <= 312 {
+        @media screen and (max-width: #{$breakpoint}px) {
+            &__title {
+                font-size: 9vw;
+            }
+            &__description {
+                font-size: 5vw;
+                &__pg {
+                    &__background {
+                        height: 12vw;
+                        width: 12vw;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@mixin card($breakpoint) {
+    @media screen and (max-width: 365px) {
+        width: 90vw;
+
+        &__img-container {
+            width: 100%;
+
+            &__img {
+                object-fit: cover;
+                width: 100%;
+                height: 100%;
+                border-radius: v.$border-primary;
+            }
+        }
+
+        &__movie-meta {
+            font-size: clamp(1.2rem, 4vw, 1.6rem);
+        }
+        
+    }
+
+    @media screen and (max-width: 520px) {
+        
+        &--horizontal {
+            display: grid;
+            grid-template-rows: 1fr 19rem;
+            grid-template-columns: 1fr;
+            width: 90vw;
+        }
+    }
+
+}
+
+@mixin listMovies($breakpoint) {
+    @media screen and (max-width: 365px) {
+        grid-template-columns: repeat(auto-fit, minmax(90vw, 1fr));
+    }
+}

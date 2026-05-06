@@ -1,0 +1,139 @@
+@use "../abstracts/variables" as v;
+@use "../abstracts/mixins" as m;
+
+.navbar {
+   display: flex;
+   height: 4.5rem;
+   font-size: 1.5rem;
+   padding: 0 1.5rem;
+   color: v.$color-secundary;
+
+   &__nav {
+      flex: 1 1 140rem;
+      display: flex;
+      margin: auto;
+
+      &__brand {
+         display: flex;
+         align-items: center;
+         flex-basis: 10%;
+
+         margin-right: 1.5rem;
+         &__name {
+            font-weight: 700;
+            text-decoration: none;
+            color: v.$color-tertiary;
+         }
+      }
+      &__navlinks {
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         flex: 0 1 30%;
+
+         &__links {
+            flex: auto;
+            display: flex;
+            justify-content: space-between;
+            list-style: none;
+
+            &__li {
+               margin: 0 5px;
+               position: relative;
+               &--visibility {
+                  display: none;
+                  visibility: hidden;
+               }
+
+               &__link {
+                  text-decoration: none;
+                  color: v.$color-tertiary;
+               }
+            }
+         }
+         &__menu-burger {
+            display: none;
+         }
+      }
+
+      &__userbox {
+         flex: 1;
+         display: flex;
+         justify-content: end;
+      }
+
+      &__user {
+         position: relative;
+         display: flex;
+         align-items: center;
+         background-color: v.$color-tertiary;
+         padding: 10px ;
+         border-radius: 5px;
+         &__menu {
+            visibility: hidden;
+            display: none;
+            position: absolute;
+            top: 3.5rem;
+            right: 0rem;
+            display: inline-block;
+            height: min-content;
+            width: 16rem;
+            padding: 5px 0;
+
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            background-color: v.$color-primary;
+            box-shadow: v.$color-light-shadow-secundary;
+            border-radius: v.$border-primary;
+
+            z-index: 60;
+
+            & > a, & > button {
+               text-decoration: none;
+               color: v.$color-tertiary;
+               background-color: inherit;
+               border: none;
+               font-size: inherit;
+               font-weight: 800;
+               margin: 2.5px 0;
+               transition: transform .2s;
+               &:hover {
+                  cursor: pointer;
+                  transform: scaleX(1.05);
+                  color: v.$color--senary;                  
+               }
+            }
+         }
+      }
+   }
+   @include m.links-navbar(536px);
+}
+
+.active-menu {
+   visibility: visible;
+   display: flex;
+}
+
+.active {
+   color: v.$color-secundary;
+}
+
+.active::after {
+   content: "";
+   height: 0.2rem;
+   width: 0%;
+   position: absolute;
+   background-color: v.$color-secundary;
+
+   top: 110%;
+   left: 0;
+   border-radius: 100px;
+   width: 100%;
+}
+
+.active-menu-2 {
+   visibility: visible;
+   display: flex;
+}

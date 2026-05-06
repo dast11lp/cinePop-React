@@ -1,0 +1,52 @@
+@use '../abstracts/variables' as v;
+.input {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    &__label {
+        margin-bottom: 5px;
+    }
+
+    &__field {
+        outline: none;
+        border: none;
+        background-color: v.$color-quaternary;
+        height: 4rem;
+        border-radius: 7px;
+        padding: 2rem 4rem;
+        width: 100%;
+
+        &--login {
+            min-width: 19rem;
+        }
+    }
+
+    .icon-awesome {
+        height: 1.5rem;
+        position: absolute;
+
+        top: 38%;
+        left: 1rem;
+    }
+
+    .icon-awesome2{
+        height: 1.5rem;
+        position: absolute;
+        top: 38%;
+        right: 1rem;
+    }
+
+    &__message {
+        font-size: 1.3rem;
+        &--success {
+            color: v.$color--septenary;
+        }
+
+        &--error {
+            color: v.$color--senary;
+        }
+    }
+    
+}

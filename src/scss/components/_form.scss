@@ -1,0 +1,49 @@
+@use "../abstracts/variables" as v;
+
+.form-box {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    background-color: v.$color-primary;
+    border-radius: 7px;
+
+    min-height: 90%;
+
+    flex-wrap: wrap;
+
+    .heading-primary {
+        font-size: v.$heading-secundary;
+        text-align: center;
+    }
+
+    &__info {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex: 1 1;
+        margin: 0 5px;
+        &__form {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            height: 25rem;
+            padding: 0 clamp(.5rem,10vw,12rem);
+            &__message {
+                color: v.$color-secundary;
+            }
+        }
+    }
+
+    &__brand {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex: 1 1;
+        margin: 0 5px;
+        &__clipBoard {
+            width: 50vw;
+            max-width: 35rem;
+        }
+    }
+}

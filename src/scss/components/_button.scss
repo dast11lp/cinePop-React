@@ -1,0 +1,55 @@
+@use '../abstracts/variables' as v;
+
+.button {
+    padding: clamp(.5rem, 1vw, 1rem);
+    background: v.$color-secundary;
+    color: v.$color-tertiary;
+    font-size: clamp(1rem,3vw,1.6rem);
+    font-weight: 700;
+
+    border-radius: 4px;
+    border: none;
+
+    transition: all .2s;
+    text-decoration: none;
+    cursor: pointer;
+
+    &:hover {
+        transform: scale(1.1);
+    }
+
+    &:active {
+        transform: translateY(3px)
+    }
+   
+    &--reject{
+        background-color: v.$color--senary;
+    }
+
+    &--nav {
+        font-size: clamp(1rem,3vw,1.5rem);
+        font-weight: 400;
+        background-color: v.$color-secundary;
+        color: v.$color-primary;
+        height: 3.5rem;
+        width: 8rem;
+
+        text-decoration: none;
+    }
+
+    &--disabled {
+        cursor: none;
+        color: v.$color--disabled-font;
+        background: v.$color--disabled-backgroud;
+    }
+
+    &--secundary {
+        background-color: v.$color-primary;
+        color: v.$color-secundary;
+    }
+
+    &--tertiary {
+        background-color: v.$color-tertiary;
+        color: v.$color-secundary;
+    }
+}
