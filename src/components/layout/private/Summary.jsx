@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import { formatDate } from "../../../helpers/formatDate";
+import getHour from "../../../helpers/getHourFromDate";
 
 
 export const Summary = () => {
@@ -15,7 +16,7 @@ export const Summary = () => {
             <p className="unique-reserve__content__item unique-reserve__content__item--pg">Fecha de la reservación: {formatDate(data?.dateRes)}</p>
             <p className="unique-reserve__content__item unique-reserve__content__item--pg">Número de sillas: {data?.chairs?.length > 0 && data?.chairs.map((el, i) => <span key={i}>{el.numberChair}, </span>)}</p>
             <p className="unique-reserve__content__item unique-reserve__content__item--pg">Fecha de la función: {formatDate(data?.dateFun)}</p>
-            {/* <p className="unique-reserve__content__item unique-reserve__content__item--pg">Hora de la función: {data?.hourTime}</p> */}
+            <p className="unique-reserve__content__item unique-reserve__content__item--pg">Hora de la función: {getHour(data?.dateFun)}</p>
             <p className="unique-reserve__content__item unique-reserve__content__item--pg">Sala: {data?.room}</p>
             <p className="unique-reserve__content__item unique-reserve__content__item--pg">Precio Total: {data?.totalMount}</p>
         </div>

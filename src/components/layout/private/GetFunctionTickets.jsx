@@ -48,6 +48,7 @@ export const GetFunctionTickets = () => {
         </div>
       </div>
       <div className="how-many__total-price">
+        <h3>Precio: &nbsp; </h3> 
         <span>${totalMount}</span>
       </div>
       <div className="how-many__button-section">
