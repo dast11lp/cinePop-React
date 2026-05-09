@@ -24,9 +24,6 @@ Frontend de una plataforma de reservas de cine. Permite autenticarse, explorar l
 
 ## Vista previa
 
-### Inicio de sesión
-![Login](./imagenes_readme/login.png)
-
 ### Cartelera con scroll infinito
 ![Home](./imagenes_readme/home.png)
 ![Scroll infinito](./imagenes_readme/infinit_scroll_1.png)
@@ -34,6 +31,9 @@ Frontend de una plataforma de reservas de cine. Permite autenticarse, explorar l
 
 ### Detalle de película y función
 ![Detalle](./imagenes_readme/details_movie_and_function.png)
+
+### Inicio de sesión
+![Login](./imagenes_readme/login.png)
 
 ### Selección de sillas
 ![Sillas 1](./imagenes_readme/select_chairs_1.png)
