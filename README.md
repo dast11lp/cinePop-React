@@ -42,6 +42,11 @@ Frontend de una plataforma de reservas de cine. Permite autenticarse, explorar l
 ![Sillas 4](./imagenes_readme/select_chairs_4.png)
 ![Sillas 5](./imagenes_readme/select_chairs_5.png)
 
+### Selección de número de boletos
+
+![Tickets 1](./imagenes_readme/getTickets_1.png)
+![Tickets 2](./imagenes_readme/getTickets_2.png)
+
 ### Resumen y pago
 ![Resumen y pago 1](./imagenes_readme/resume&payment_1.png)
 ![Resumen y pago 2](./imagenes_readme/resume&payment_2.png)
@@ -50,8 +55,6 @@ Frontend de una plataforma de reservas de cine. Permite autenticarse, explorar l
 
 ### Historial de compras
 ![Historial](./imagenes_readme/history.png)
-![Tickets 1](./imagenes_readme/getTickets_1.png)
-![Tickets 2](./imagenes_readme/getTickets_2.png)
 
 ## Flujo de reserva y pago
 
