@@ -35,6 +35,11 @@ Frontend de una plataforma de reservas de cine. Permite autenticarse, explorar l
 ### Inicio de sesión
 ![Login](./imagenes_readme/login.png)
 
+### Selección de número de boletos
+
+![Tickets 1](./imagenes_readme/getTickets_1.png)
+![Tickets 2](./imagenes_readme/getTickets_2.png)
+
 ### Selección de sillas
 ![Sillas 1](./imagenes_readme/select_chairs_1.png)
 ![Sillas 2](./imagenes_readme/select_chairs_2.png)
@@ -42,10 +47,7 @@ Frontend de una plataforma de reservas de cine. Permite autenticarse, explorar l
 ![Sillas 4](./imagenes_readme/select_chairs_4.png)
 ![Sillas 5](./imagenes_readme/select_chairs_5.png)
 
-### Selección de número de boletos
 
-![Tickets 1](./imagenes_readme/getTickets_1.png)
-![Tickets 2](./imagenes_readme/getTickets_2.png)
 
 ### Resumen y pago
 ![Resumen y pago 1](./imagenes_readme/resume&payment_1.png)
